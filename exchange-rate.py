@@ -13,12 +13,29 @@ eur = {
     '_': '1685488908136'
 }
 
+cny = {
+    'DT': '',
+    'val_id': 'R01375'
+}
+
+tl = {
+    'DT': '',
+    'val_id': 'R01700'
+}
+
+pln = {
+    'DT': '',
+    'val_id': 'R01565'
+}
+
 def get_cours_crb(*args: dict, url='https://cbr.ru/cursonweek/') -> None:
     # Словарь кодов валют
     currencies = {
         'R01235': 'USD',
         'R01239': 'EUR',
-        'R01375': 'CNY'
+        'R01375': 'Юань',
+        'R01700': 'Турецкая лира',
+        'R01565': 'Злотый'
     }
 
     # Заголовки
@@ -40,8 +57,8 @@ def get_cours_crb(*args: dict, url='https://cbr.ru/cursonweek/') -> None:
             d += 1
 
         # Курс валют
-        print(f'Курс {currencies[param["val_id"]]}: {data["curs"]:.2f} руб.')
+        print(f'{currencies[param["val_id"]]}: {data["curs"]:.2f} руб.')
 
 
-get_cours_crb(usd, eur)
+get_cours_crb(usd, eur, cny, tl, pln)
 
